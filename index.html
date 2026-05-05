@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Started with Claude Code — veda mahita | NextWork</title>
+<title>Get Started with Claude Code — Mahita | NextWork</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 
@@ -30,22 +30,22 @@
   --has-stars:     1;
 }
 
-/* ── WABI SABI ── */
-[data-theme="wabisabi"] {
-  --bg:            #f5f0e8;
-  --bg-card:       #ede8de;
-  --bg-surface:    rgba(0,0,0,0.03);
-  --border:        rgba(120,100,70,0.18);
-  --text-primary:  #2a2318;
-  --text-secondary:rgba(42,35,24,0.55);
-  --accent:        #8a7355;
-  --accent-dim:    rgba(138,115,85,0.2);
-  --accent-btn:    #6b5840;
-  --avatar-bg:     #8a7355;
-  --tag-color:     rgba(138,115,85,0.7);
-  --callout-left:  #8a7355;
-  --ss-chrome:     #d4cfc5;
-  --ss-bg:         #e8e3d8;
+/* ── GHIBLI GARDEN ── */
+[data-theme="ghibli"] {
+  --bg:            rgba(240,248,235,0.82);
+  --bg-card:       rgba(255,255,255,0.72);
+  --bg-surface:    rgba(255,255,255,0.6);
+  --border:        rgba(80,160,60,0.2);
+  --text-primary:  #1a3020;
+  --text-secondary:rgba(26,48,32,0.6);
+  --accent:        #3a8a2a;
+  --accent-dim:    rgba(58,138,42,0.15);
+  --accent-btn:    #2a7a1a;
+  --avatar-bg:     #3a8a2a;
+  --tag-color:     rgba(58,138,42,0.7);
+  --callout-left:  #e07830;
+  --ss-chrome:     #d8ecd0;
+  --ss-bg:         #eaf4e2;
   --has-stars:     0;
 }
 
@@ -98,15 +98,16 @@ body {
   transition: opacity 0.5s ease;
 }
 
-body:not([data-theme="celestial"]) #star-canvas {
-  opacity: 0;
+[data-theme="ghibli"] #star-canvas,
+[data-theme="sketchbook"] #star-canvas {
+  display: none;
 }
 
 .nebula {
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   filter: blur(120px);
   transition: opacity 0.5s ease;
 }
@@ -125,23 +126,7 @@ body:not([data-theme="celestial"]) .nebula { opacity: 0; }
   animation: nbDrift 35s ease-in-out infinite alternate-reverse;
 }
 
-/* Gradient fade — stars only near top, dark blue below */
-.celestial-fade {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    transparent 30%,
-    rgba(4,3,15,0.6) 55%,
-    rgba(6,5,28,0.92) 75%,
-    #060518 100%
-  );
-  transition: opacity 0.5s ease;
-}
-body:not([data-theme="celestial"]) .celestial-fade { opacity: 0; }
+.celestial-fade { display: none; }
 
 @keyframes nbDrift {
   0% { transform: translate(0,0); }
@@ -149,22 +134,110 @@ body:not([data-theme="celestial"]) .celestial-fade { opacity: 0; }
 }
 
 /* ════════════════════════════════════════
-   WABI SABI TEXTURE
+   GHIBLI GARDEN BACKGROUND
 ════════════════════════════════════════ */
-.wabisabi-texture {
+.ghibli-garden {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.5s ease;
-  background-image:
-    radial-gradient(ellipse 80% 40% at 10% 20%, rgba(180,150,100,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 60% at 90% 80%, rgba(140,110,70,0.1) 0%, transparent 60%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  transition: opacity 0.8s ease;
+  overflow: hidden;
 }
-[data-theme="wabisabi"] .wabisabi-texture { opacity: 1; }
+[data-theme="ghibli"] .ghibli-garden { opacity: 1; }
 
+/* ── SKY ── */
+.ghibli-garden::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #7ec8e3 0%,
+    #a8ddf0 25%,
+    #c8eef8 45%,
+    #ddf5e8 60%,
+    #b8e8a0 72%,
+    #7ec868 82%,
+    #5ab848 90%,
+    #4aa838 100%
+  );
+}
+
+/* ── CLOUDS + HILLS + MEADOW LAYERS ── */
+.ghibli-garden::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    /* Fluffy cloud 1 - large left */
+    radial-gradient(ellipse 180px 90px at 18% 18%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 40%, transparent 70%),
+    radial-gradient(ellipse 120px 70px at 22% 14%, rgba(255,255,255,0.9) 0%, transparent 60%),
+    radial-gradient(ellipse 100px 60px at 14% 22%, rgba(255,255,255,0.85) 0%, transparent 60%),
+
+    /* Fluffy cloud 2 - large center */
+    radial-gradient(ellipse 220px 100px at 52% 12%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.7) 40%, transparent 70%),
+    radial-gradient(ellipse 150px 80px at 58% 8%, rgba(255,255,255,0.88) 0%, transparent 60%),
+    radial-gradient(ellipse 130px 75px at 46% 16%, rgba(255,255,255,0.85) 0%, transparent 60%),
+
+    /* Fluffy cloud 3 - right */
+    radial-gradient(ellipse 160px 80px at 80% 15%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.75) 40%, transparent 65%),
+    radial-gradient(ellipse 110px 65px at 85% 10%, rgba(255,255,255,0.85) 0%, transparent 55%),
+    radial-gradient(ellipse 100px 60px at 76% 19%, rgba(255,255,255,0.8) 0%, transparent 55%),
+
+    /* Distant misty hills */
+    radial-gradient(ellipse 400px 200px at 25% 48%, rgba(130,200,120,0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 500px 220px at 65% 46%, rgba(100,180,90,0.4) 0%, transparent 65%),
+    radial-gradient(ellipse 350px 180px at 85% 50%, rgba(120,190,110,0.35) 0%, transparent 60%),
+
+    /* Bright meadow green mid -->
+    radial-gradient(ellipse 800px 200px at 50% 72%, rgba(100,200,60,0.6) 0%, transparent 70%),
+
+    /* Wildflowers - pinks and reds scattered */
+    radial-gradient(circle 8px at 12% 78%, rgba(240,80,100,0.8) 0%, transparent 100%),
+    radial-gradient(circle 6px at 18% 82%, rgba(220,60,80,0.7) 0%, transparent 100%),
+    radial-gradient(circle 7px at 8% 85%, rgba(255,120,140,0.75) 0%, transparent 100%),
+    radial-gradient(circle 5px at 25% 80%, rgba(240,80,100,0.7) 0%, transparent 100%),
+    radial-gradient(circle 8px at 32% 84%, rgba(255,100,80,0.75) 0%, transparent 100%),
+    radial-gradient(circle 6px at 38% 79%, rgba(220,60,80,0.7) 0%, transparent 100%),
+    radial-gradient(circle 7px at 45% 83%, rgba(240,80,100,0.75) 0%, transparent 100%),
+    radial-gradient(circle 5px at 52% 78%, rgba(255,120,140,0.7) 0%, transparent 100%),
+    radial-gradient(circle 8px at 58% 85%, rgba(240,80,100,0.75) 0%, transparent 100%),
+    radial-gradient(circle 6px at 65% 80%, rgba(220,60,80,0.7) 0%, transparent 100%),
+    radial-gradient(circle 7px at 72% 83%, rgba(255,100,80,0.75) 0%, transparent 100%),
+    radial-gradient(circle 5px at 78% 79%, rgba(240,80,100,0.7) 0%, transparent 100%),
+    radial-gradient(circle 8px at 85% 84%, rgba(255,120,140,0.75) 0%, transparent 100%),
+    radial-gradient(circle 6px at 92% 80%, rgba(220,60,80,0.7) 0%, transparent 100%),
+
+    /* Yellow wildflowers */
+    radial-gradient(circle 6px at 15% 75%, rgba(255,220,40,0.85) 0%, transparent 100%),
+    radial-gradient(circle 5px at 28% 77%, rgba(255,200,30,0.8) 0%, transparent 100%),
+    radial-gradient(circle 6px at 42% 74%, rgba(255,220,40,0.8) 0%, transparent 100%),
+    radial-gradient(circle 5px at 55% 76%, rgba(255,200,30,0.8) 0%, transparent 100%),
+    radial-gradient(circle 6px at 68% 75%, rgba(255,220,40,0.8) 0%, transparent 100%),
+    radial-gradient(circle 5px at 82% 77%, rgba(255,200,30,0.8) 0%, transparent 100%),
+
+    /* White flowers */
+    radial-gradient(circle 5px at 22% 72%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(circle 4px at 35% 74%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(circle 5px at 48% 71%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(circle 4px at 62% 73%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(circle 5px at 75% 72%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(circle 4px at 88% 74%, rgba(255,255,255,0.85) 0%, transparent 100%),
+
+    /* Water/lake reflection in middle -->
+    radial-gradient(ellipse 300px 60px at 50% 62%, rgba(140,200,230,0.55) 0%, rgba(100,180,220,0.3) 50%, transparent 80%),
+
+    /* Foreground dark grass edge */
+    linear-gradient(to top, rgba(40,100,30,0.8) 0%, rgba(50,120,40,0.6) 5%, transparent 15%);
+}
+
+/* Cloud animation */
+@keyframes cloudDrift {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 40px 0px; }
+}
 /* ════════════════════════════════════════
    SKETCHBOOK GRID
 ════════════════════════════════════════ */
@@ -214,8 +287,8 @@ body:not([data-theme="celestial"]) .celestial-fade { opacity: 0; }
 [data-theme="celestial"] .doc-header {
   background: rgba(4,3,15,0.88);
 }
-[data-theme="wabisabi"] .doc-header {
-  background: rgba(245,240,232,0.92);
+[data-theme="ghibli"] .doc-header {
+  background: rgba(240,237,228,0.94);
 }
 [data-theme="sketchbook"] .doc-header {
   background: rgba(247,244,239,0.92);
@@ -252,6 +325,39 @@ body:not([data-theme="celestial"]) .celestial-fade { opacity: 0; }
   padding: 56px 0 36px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.15s;
+  text-align: center;
+}
+
+.hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.hero-logo-badge {
+  width: 56px; height: 56px;
+  background: white;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+}
+
+[data-theme="celestial"] .hero-logo-badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.doc-byline {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 16px;
+  letter-spacing: 0.02em;
+}
+
+.learner-row {
+  display: none;
 }
 
 .learner-row {
@@ -529,7 +635,7 @@ code {
 }
 
 [data-theme="celestial"] .bottom-bar { background: rgba(10,8,35,0.88); }
-[data-theme="wabisabi"]  .bottom-bar { background: rgba(245,240,232,0.92); }
+[data-theme="ghibli"]    .bottom-bar { background: rgba(240,237,228,0.94); }
 [data-theme="sketchbook"] .bottom-bar { background: rgba(247,244,239,0.94); }
 
 .bar-logo svg { width: 28px; height: 28px; display: block; }
@@ -605,8 +711,8 @@ code {
 .swatch-celestial {
   background: radial-gradient(circle at 40% 40%, #6b5ef8, #04030f);
 }
-.swatch-wabisabi {
-  background: radial-gradient(circle at 40% 40%, #c4a882, #f5f0e8);
+.swatch-ghibli {
+  background: radial-gradient(circle at 40% 40%, #7ab86a, #f0ede4);
 }
 .swatch-sketchbook {
   background: radial-gradient(circle at 40% 40%, #fff, #f7f4ef);
@@ -639,17 +745,47 @@ code {
 }
 
 /* ════════════════════════════════════════
-   WABI SABI SPECIAL STYLES
+   GHIBLI GARDEN SPECIAL STYLES
 ════════════════════════════════════════ */
-[data-theme="wabisabi"] .hero-screenshot,
-[data-theme="wabisabi"] .step-screenshot {
-  border-radius: 6px;
+[data-theme="ghibli"] .page-wrap {
+  background: transparent;
 }
 
-[data-theme="wabisabi"] .callout {
-  background: rgba(138,115,85,0.06);
-  border-radius: 4px;
+[data-theme="ghibli"] .doc-title {
+  color: #1a3a20;
 }
+
+[data-theme="ghibli"] .step-heading {
+  color: #1a3a20;
+}
+
+[data-theme="ghibli"] .hero-screenshot,
+[data-theme="ghibli"] .step-screenshot {
+  border-radius: 12px;
+  border-color: rgba(80,160,60,0.2);
+}
+
+[data-theme="ghibli"] .callout {
+  background: rgba(255,255,255,0.55);
+  border-radius: 8px;
+}
+
+[data-theme="ghibli"] .summary-card {
+  background: rgba(255,255,255,0.65);
+  border-color: rgba(80,160,60,0.18);
+  border-radius: 20px;
+}
+
+[data-theme="ghibli"] .step-block {
+  background: rgba(255,255,255,0.45);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(80,160,60,0.12);
+  backdrop-filter: blur(4px);
+}
+
+
 
 /* ════════════════════════════════════════
    ANIMATIONS
@@ -671,8 +807,8 @@ code {
 <canvas id="star-canvas"></canvas>
 <div class="nebula nb-purple"></div>
 <div class="nebula nb-blue"></div>
-<div class="celestial-fade"></div>
-<div class="wabisabi-texture"></div>
+
+<div class="ghibli-garden"></div>
 <div class="sketchbook-grid"></div>
 
 <!-- ── THEME PICKER POPUP ── -->
@@ -682,9 +818,9 @@ code {
     <div class="theme-swatch swatch-celestial"></div>
     Celestial
   </div>
-  <div class="theme-option" data-pick="wabisabi">
-    <div class="theme-swatch swatch-wabisabi"></div>
-    Wabi Sabi
+  <div class="theme-option" data-pick="ghibli">
+    <div class="theme-swatch swatch-ghibli"></div>
+    Ghibli Garden
   </div>
   <div class="theme-option" data-pick="sketchbook">
     <div class="theme-swatch swatch-sketchbook"></div>
@@ -695,52 +831,41 @@ code {
 <div class="page-wrap">
 
   <!-- HEADER -->
-  <header class="doc-header">
-    <a href="https://nextwork.org" class="nw-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256" width="28" height="28">
-        <path fill="currentColor" d="M245.94 78.1744c-6.445-15.2426-15.675-28.9302-27.429-40.6851-11.755-11.7547-25.443-20.9839-40.685-27.4297C162.042 3.3847 145.279 0 128 0c-17.279 0-34.0416 3.3847-49.8256 10.0596-15.2426 6.4458-28.9302 15.675-40.6851 27.4297-11.7547 11.7549-20.9839 25.4425-27.4297 40.6851C3.3847 93.9584 0 110.721 0 128c0 17.279 3.3847 34.042 10.0596 49.826 6.4458 15.242 15.675 28.93 27.4297 40.685 11.7549 11.754 25.4425 20.984 40.6851 27.429C93.9584 252.615 110.721 256 128 256c17.279 0 34.042-3.385 49.826-10.06 15.242-6.445 28.93-15.675 40.685-27.429 11.754-11.755 20.984-25.443 27.429-40.685C252.615 162.042 256 145.279 256 128c0-17.279-3.385-34.0416-10.06-49.8256Zm-71.462-60.2028c14.217 6.0134 26.989 14.6239 37.956 25.5913 10.968 10.9673 19.578 23.7389 25.592 37.9561 5.202 12.3018 8.261 25.248 9.126 38.581l-15.976-9.957c-35.359-22.0377-68.633-47.7292-98.901-76.3619l-24.783-23.4438c6.723-1.16255 13.567-1.74671 20.505-1.74671 16.122 0 31.759 3.15561 46.478 9.38101h.003Zm-92.9561 0c5.1658-2.1849 10.4461-3.989 15.8183-5.415l29.0328 27.4642c30.58 28.9274 64.187 54.8912 99.895 77.1832-63.464-16.233-123.645-42.1794-179.0053-77.1774 10.1082-9.2923 21.608-16.7031 34.2592-22.055ZM17.9716 81.5219c5.5352-13.0864 13.2753-24.9443 23.0226-35.2989 54.5591 34.729 113.7598 60.765 176.1768 77.482H8.6679c.51258-14.604 3.6339-28.776 9.3065-42.1831h-.0028Zm0 92.9561c-5.6698-13.407-8.79397-27.579-9.30654-42.183H217.371c-62.479 16.703-121.7633 42.741-176.3768 77.485-9.7473-10.358-17.4874-22.213-23.0226-35.302Zm29.294 41.498c55.3834-34.989 115.6034-60.933 179.0884-77.149l-1.077.676c-34.946 21.912-67.886 47.365-97.904 75.652l-30.0271 28.291c-5.375-1.426-10.6553-3.23-15.824-5.418-12.6483-5.349-24.1481-12.76-34.2534-22.052h-.0029Zm190.7624-41.498c-6.013 14.217-14.624 26.989-25.591 37.956-10.967 10.968-23.739 19.578-37.956 25.592-14.719 6.225-30.357 9.38-46.478 9.38-6.93 0-13.768-.584-20.486-1.743l25.749-24.263c29.612-27.902 62.107-53.01 96.578-74.624l17.311-10.852c-.868 13.323-3.924 26.258-9.124 38.551l-.003.003Z"/>
-      </svg>
-      <span class="nw-wordmark">nextwork</span>
-    </a>
-    <a href="https://nextwork.org" class="nw-url">nextwork.org</a>
-  </header>
+
 
   <!-- HERO -->
   <section class="doc-hero">
-    <div class="learner-row">
-      <div class="learner-avatar">V</div>
-      <div>
-        <div class="learner-name">veda mahita</div>
-        <div class="learner-tag">NextWork Student</div>
+    <div class="hero-logo-wrap">
+      <div class="hero-logo-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256" width="32" height="32">
+          <path fill="currentColor" d="M245.94 78.1744c-6.445-15.2426-15.675-28.9302-27.429-40.6851-11.755-11.7547-25.443-20.9839-40.685-27.4297C162.042 3.3847 145.279 0 128 0c-17.279 0-34.0416 3.3847-49.8256 10.0596-15.2426 6.4458-28.9302 15.675-40.6851 27.4297-11.7547 11.7549-20.9839 25.4425-27.4297 40.6851C3.3847 93.9584 0 110.721 0 128c0 17.279 3.3847 34.042 10.0596 49.826 6.4458 15.242 15.675 28.93 27.4297 40.685 11.7549 11.754 25.4425 20.984 40.6851 27.429C93.9584 252.615 110.721 256 128 256c17.279 0 34.042-3.385 49.826-10.06 15.242-6.445 28.93-15.675 40.685-27.429 11.754-11.755 20.984-25.443 27.429-40.685C252.615 162.042 256 145.279 256 128c0-17.279-3.385-34.0416-10.06-49.8256Zm-71.462-60.2028c14.217 6.0134 26.989 14.6239 37.956 25.5913 10.968 10.9673 19.578 23.7389 25.592 37.9561 5.202 12.3018 8.261 25.248 9.126 38.581l-15.976-9.957c-35.359-22.0377-68.633-47.7292-98.901-76.3619l-24.783-23.4438c6.723-1.16255 13.567-1.74671 20.505-1.74671 16.122 0 31.759 3.15561 46.478 9.38101h.003Zm-92.9561 0c5.1658-2.1849 10.4461-3.989 15.8183-5.415l29.0328 27.4642c30.58 28.9274 64.187 54.8912 99.895 77.1832-63.464-16.233-123.645-42.1794-179.0053-77.1774 10.1082-9.2923 21.608-16.7031 34.2592-22.055ZM17.9716 81.5219c5.5352-13.0864 13.2753-24.9443 23.0226-35.2989 54.5591 34.729 113.7598 60.765 176.1768 77.482H8.6679c.51258-14.604 3.6339-28.776 9.3065-42.1831h-.0028Zm0 92.9561c-5.6698-13.407-8.79397-27.579-9.30654-42.183H217.371c-62.479 16.703-121.7633 42.741-176.3768 77.485-9.7473-10.358-17.4874-22.213-23.0226-35.302Zm29.294 41.498c55.3834-34.989 115.6034-60.933 179.0884-77.149l-1.077.676c-34.946 21.912-67.886 47.365-97.904 75.652l-30.0271 28.291c-5.375-1.426-10.6553-3.23-15.824-5.418-12.6483-5.349-24.1481-12.76-34.2534-22.052h-.0029Zm190.7624-41.498c-6.013 14.217-14.624 26.989-25.591 37.956-10.967 10.968-23.739 19.578-37.956 25.592-14.719 6.225-30.357 9.38-46.478 9.38-6.93 0-13.768-.584-20.486-1.743l25.749-24.263c29.612-27.902 62.107-53.01 96.578-74.624l17.311-10.852c-.868 13.323-3.924 26.258-9.124 38.551l-.003.003Z"/>
+        </svg>
       </div>
     </div>
     <h1 class="doc-title">Get Started with Claude Code</h1>
+    <p class="doc-byline">By &nbsp;veda mahita &nbsp;|&nbsp; May 2026</p>
   </section>
 
   <!-- HERO SCREENSHOT -->
   <div class="hero-screenshot">
     <div class="sc-chrome">
       <div class="sc-dot r"></div><div class="sc-dot y"></div><div class="sc-dot g"></div>
-      <div class="sc-title">automattic_hub — Claude Code</div>
+      <div class="sc-title">first_project — Claude Code</div>
     </div>
     <div class="sc-body">
-      <div><span class="s-dim">$</span> <span class="s-green">claude</span> <span class="s-dim"> "Fix missing documentation for Woo, Jetpack, Pressable"</span></div>
+      <div><span class="s-dim">$</span> <span class="s-green">claude</span> <span class="s-dim"> "Set up the project and install dependencies"</span></div>
       <br>
-      <div><span class="s-blue">●</span> <span class="s-dim">Bash</span>&nbsp; Check git status</div>
-      <div style="padding-left:20px"><span class="s-dim">OUT &nbsp;</span><span class="s-white">On branch dev · up to date with 'origin/dev'</span></div>
+      <div><span class="s-blue">●</span> <span class="s-dim">Bash</span>&nbsp; Checking environment</div>
+      <div style="padding-left:20px"><span class="s-dim">OUT &nbsp;</span><span class="s-white">Node v20.11.0 · npm 10.2.4 · git 2.43.0</span></div>
       <br>
-      <div><span class="s-blue">●</span> <span class="s-dim">Bash</span>&nbsp; Stage and commit three template fixes</div>
-      <div style="padding-left:20px"><span class="s-dim">OUT &nbsp;</span><span class="s-accent">[dev e8eadle] Fix missing documents · 3 files changed</span></div>
+      <div><span class="s-blue">●</span> <span class="s-dim">Bash</span>&nbsp; Installing packages</div>
+      <div style="padding-left:20px"><span class="s-dim">OUT &nbsp;</span><span class="s-accent">added 312 packages in 8.4s</span></div>
       <br>
-      <div><span class="s-green">✓ Pushed to origin/dev</span></div>
+      <div><span class="s-green">✓ Project ready — type your first task</span></div>
     </div>
   </div>
 
-  <!-- SECTION DIVIDER -->
-  <div class="section-divider">
-    <span class="sd-label">Project Steps</span>
-    <div class="sd-line"></div>
-  </div>
+
 
   <!-- STEP 1 -->
   <div class="step-block">
@@ -761,7 +886,7 @@ code {
       </div>
       <div class="ss-body">
         <div class="cl"><span class="ln">1</span><span><span class="s-dim">$</span> npm install -g @anthropic-ai/claude-code</span></div>
-        <div class="cl"><span class="ln">2</span><span class="cm">&nbsp; added 847 packages in 23s</span></div>
+        <div class="cl"><span class="ln">2</span><span class="cm">&nbsp; added 312 packages in 8s</span></div>
         <div class="cl"><span class="ln">3</span><span>&nbsp;</span></div>
         <div class="cl"><span class="ln">4</span><span><span class="s-dim">$</span> claude</span></div>
         <div class="cl"><span class="ln">5</span><span class="s-green">&nbsp; ✓ Claude Code initialized successfully</span></div>
@@ -795,12 +920,12 @@ code {
         <div class="cl"><span class="ln">1</span><span><span class="kw">#</span> <span class="s-accent">Project Context</span></span></div>
         <div class="cl"><span class="ln">2</span><span>&nbsp;</span></div>
         <div class="cl"><span class="ln">3</span><span><span class="kw">##</span> What this project is</span></div>
-        <div class="cl"><span class="ln">4</span><span class="st">&nbsp; Automattic Hub — internal WordPress enablement platform</span></div>
-        <div class="cl"><span class="ln">5</span><span class="st">&nbsp; serving 6 business units across Automattic.</span></div>
+        <div class="cl"><span class="ln">4</span><span class="st">&nbsp; My Learning Project — a hands-on AI skills portfolio</span></div>
+        <div class="cl"><span class="ln">5</span><span class="st">&nbsp; built with Claude Code and NextWork.</span></div>
         <div class="cl"><span class="ln">6</span><span>&nbsp;</span></div>
         <div class="cl"><span class="ln">7</span><span><span class="kw">##</span> Current task</span></div>
-        <div class="cl"><span class="ln">8</span><span class="st">&nbsp; Fix missing documentation templates for Woo, Jetpack,</span></div>
-        <div class="cl"><span class="ln">9</span><span class="st">&nbsp; and Pressable pages.</span></div>
+        <div class="cl"><span class="ln">8</span><span class="st">&nbsp; Build and document an AI project from scratch,</span></div>
+        <div class="cl"><span class="ln">9</span><span class="st">&nbsp; generate portfolio documentation automatically.</span></div>
       </div>
     </div>
     <h3 class="step-subheading">How CLAUDE.md works</h3>
@@ -817,19 +942,19 @@ code {
         <div class="ss-tabs"><span class="ss-tab active">Claude Code</span><span class="ss-tab">git log</span></div>
       </div>
       <div class="ss-body">
-        <div class="cl"><span class="ln">1</span><span><span class="s-blue">●</span> Reading page-woo.html, page-jetpack.html, page-pressable.html</span></div>
+        <div class="cl"><span class="ln">1</span><span><span class="s-blue">●</span> Reading project files and understanding structure...</span></div>
         <div class="cl"><span class="ln">2</span><span>&nbsp;</span></div>
-        <div class="cl"><span class="ln">3</span><span class="s-accent">&nbsp; Found 3 pages with missing documentation templates.</span></div>
-        <div class="cl"><span class="ln">4</span><span class="cm">&nbsp; Writing fixes...</span></div>
+        <div class="cl"><span class="ln">3</span><span class="s-accent">&nbsp; Identified 3 tasks to complete.</span></div>
+        <div class="cl"><span class="ln">4</span><span class="cm">&nbsp; Running...</span></div>
         <div class="cl"><span class="ln">5</span><span>&nbsp;</span></div>
-        <div class="cl"><span class="ln">6</span><span class="s-green">&nbsp; ✓ page-woo.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— template restored</span></div>
-        <div class="cl"><span class="ln">7</span><span class="s-green">&nbsp; ✓ page-jetpack.html &nbsp;&nbsp;— template restored</span></div>
-        <div class="cl"><span class="ln">8</span><span class="s-green">&nbsp; ✓ page-pressable.html — template restored</span></div>
+        <div class="cl"><span class="ln">6</span><span class="s-green">&nbsp; ✓ task-01.md &nbsp;— documented</span></div>
+        <div class="cl"><span class="ln">7</span><span class="s-green">&nbsp; ✓ task-02.md &nbsp;— documented</span></div>
+        <div class="cl"><span class="ln">8</span><span class="s-green">&nbsp; ✓ task-03.md &nbsp;— documented</span></div>
         <div class="cl"><span class="ln">9</span><span>&nbsp;</span></div>
         <div class="cl"><span class="ln">10</span><span class="s-green">&nbsp; ✓ Pushed to origin/dev</span></div>
       </div>
     </div>
-    <p class="step-body">I asked Claude Code to build the fix by prompting: <code>"Fix missing documentation for Woo, Jetpack and Pressable pages"</code>. Then I refined it by reviewing the diffs before Claude committed, adjusting the template wording to match the existing platform tone.</p>
+    <p class="step-body">I asked Claude Code to build the project by prompting: <code>"Set up the project and document each step"</code>. Then I refined it by reviewing each output, adjusting the wording and structure as needed.</p>
   </div>
 
   <!-- SUMMARY -->
@@ -855,15 +980,7 @@ code {
     </div>
   </div>
 
-  <!-- SHARE -->
-  <div class="share-section">
-    <h2 class="share-heading">Share this project</h2>
-    <p class="share-sub">Let the world see what you built</p>
-    <div class="share-actions">
-      <button class="btn btn-primary">Share on LinkedIn</button>
-      <button class="btn btn-outline">Download PDF</button>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <footer class="doc-footer">
@@ -939,7 +1056,7 @@ options.forEach(opt => {
     opt.classList.add('selected');
     popup.classList.remove('open');
     // reinit stars if switching to celestial
-    if (theme === 'celestial') { resize(); initStars(); }
+    if (theme === 'celestial') { canvas.style.display = 'block'; resize(); initStars(); } else { canvas.style.display = 'none'; }
   });
 });
 
@@ -955,13 +1072,13 @@ function resize() {
 
 function initStars() {
   stars = [];
-  const n = Math.floor((W * H) / 2600);
+  const n = Math.floor((W * H) / 1200);
   for (let i = 0; i < n; i++) {
     stars.push({
       x: Math.random() * W,
-      y: Math.random() * H * 0.6, // only top 60% of screen
-      r: Math.random() * 1.4 + 0.15,
-      o: Math.random() * 0.65 + 0.2,
+      y: Math.random() * H,
+      r: Math.random() * 2.0 + 0.5,
+      o: Math.random() * 0.5 + 0.6,
       spd: Math.random() * 0.003 + 0.0008,
       ph: Math.random() * Math.PI * 2,
       col: Math.random() > 0.85 ? '#a89cff' : Math.random() > 0.75 ? '#c0b8ff' : '#ffffff'
@@ -985,9 +1102,9 @@ function animate() {
   ctx.clearRect(0, 0, W, H);
   frame++;
 
-  if (root.getAttribute('data-theme') === 'celestial') {
+  {
     stars.forEach(s => {
-      const f = s.o * (0.55 + 0.45 * Math.sin(frame * s.spd + s.ph));
+      const f = s.o * (0.7 + 0.3 * Math.sin(frame * s.spd + s.ph));
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       ctx.fillStyle = s.col;
