@@ -17,7 +17,7 @@
   --bg-card:       #0b0a22;
   --bg-surface:    rgba(255,255,255,0.04);
   --border:        rgba(180,170,255,0.14);
-  --text-primary:  #EDE9FF;
+  --text-primary:  #FFFFFF;
   --text-secondary:rgba(237,233,255,0.52);
   --accent:        #a89cff;
   --accent-dim:    rgba(168,156,255,0.18);
@@ -1072,7 +1072,7 @@ function resize() {
 
 function initStars() {
   stars = [];
-  const n = Math.floor((W * H) / 3600);
+  const n = Math.floor((W * H) / 4500);
   for (let i = 0; i < n; i++) {
     stars.push({
       x: Math.random() * W,
